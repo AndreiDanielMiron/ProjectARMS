@@ -37,7 +37,6 @@ def split_list(lista, size):
 
 
 def get_top_posts(subreddit, time_period='day'):
-    print(50*"*")
     lastday_subreddit = list(reddit.subreddit(subreddit).top(time_period))
     print(lastday_subreddit[-1].id)
     with open(generate_file_name(subreddit, "Top"), "w", encoding="utf-8") as csv_file:
@@ -60,8 +59,12 @@ def get_top_posts(subreddit, time_period='day'):
 
 def populate_today_top(list_of_subreddits):
     for subreddit in list_of_subreddits:
-        get_top_posts(subreddit)
-
+        try:
+            print(50 * "*")
+            print(subreddit.title)
+            get_top_posts(subreddit.title)
+        except Exception as e:
+            print(e)
 
 def start_data_extraction():
     popular_subreddits = list(reddit.subreddits.popular())
@@ -70,6 +73,9 @@ def start_data_extraction():
 
 start_data_extraction()
 
+# popular_subreddits = list(reddit.subreddits.popular())
+# for i in popular_subreddits:
+#     print(i.title)
 
 # import pandas
 # # pandas.set_option('display.max_columns', None)
