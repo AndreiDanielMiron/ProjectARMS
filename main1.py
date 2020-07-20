@@ -4,10 +4,7 @@ from datetime import datetime
 import praw
 from openpyxl import Workbook, load_workbook
 
-reddit = praw.Reddit(client_id="D67TnkiiRNG0fw",
-                     client_secret="JE2Q0ykufpoBXzHY6MSthVlFK0c",
-                     username="userReddit122",
-                     password="12f0f5f2",
+reddit = praw.Reddit(
                      user_agent="Crawler")
 
 list_of_post_id = []
